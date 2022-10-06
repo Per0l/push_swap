@@ -1,0 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   debug.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aperol-h <aperol-h@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/18 02:10:49 by aperol-h          #+#    #+#             */
+/*   Updated: 2021/10/08 19:21:53 by aperol-h         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+#include <stdio.h>
+#include <unistd.h>
+
+void	print_stack(t_stack *stack)
+{
+	int	bigger;
+	int stacka, stackb;
+
+	printf("\n------------\n");
+	bigger = stack->a.size > stack->b.size ? stack->a.size : stack->b.size;
+	for (int i = 0; i < bigger; i++)
+	{
+		stacka = i < stack->a.size ? stack->a.arr[i] : 0;
+		stackb = i < stack->b.size ? stack->b.arr[i] : 0;
+		printf("%4i    %4i\n", stacka, stackb);
+	}
+	printf("------------\n");
+}
+
+void	ft_print_str(char *s)
+{
+	if (ft_streq(s, "sa\n") || ft_streq(s, "sb\n") || ft_streq(s, "ss\n")
+		|| ft_streq(s, "pa\n") || ft_streq(s, "pb\n") || ft_streq(s, "ra\n")
+		|| ft_streq(s, "rb\n") || ft_streq(s, "rr\n") || ft_streq(s, "rra\n")
+		|| ft_streq(s, "rrb\n") || ft_streq(s, "rrr\n"))
+		return ;
+	while (*s)
+		write(1, s++, 1);
+}
